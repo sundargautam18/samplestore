@@ -49,7 +49,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
             15.verticalSpace,
             FormBuilderTextField(
-              name: "Password",
+              name: "password",
               obscureText: _obscureText,
               validator: FormBuilderValidators.compose([
                 FormBuilderValidators.required(
@@ -64,7 +64,11 @@ class _LoginFormState extends State<LoginForm> {
                   prefixIcon: const Icon(Icons.lock),
                   prefixIconColor: MaterialStateColor.resolveWith((states) =>
                       states.contains(MaterialState.focused)
-                          ? HexColor(primaryColor)
+                          ? formKey.currentState?.fields['password']
+                                      ?.errorText !=
+                                  null
+                              ? Colors.red
+                              : HexColor(primaryColor)
                           : Colors.black),
                   focusedBorder: OutlineInputBorder(
                     borderSide:
