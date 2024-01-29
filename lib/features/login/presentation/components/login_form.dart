@@ -72,11 +72,13 @@ class _LoginFormState extends State<LoginForm> {
                   ),
                   hintText: "Enter password"),
             ),
+            16.verticalSpace,
             Row(
               children: [
                 Expanded(
                     child: TextButton(
                         style: TextButton.styleFrom(
+                          padding: const EdgeInsets.all(16),
                           backgroundColor: HexColor(primaryColor),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
