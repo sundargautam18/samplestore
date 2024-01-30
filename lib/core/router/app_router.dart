@@ -9,6 +9,7 @@ import 'package:samplestore/features/splash/splash_screen.dart';
 
 GoRouter appRouter = GoRouter(
   initialLocation: "/",
+  
   redirect: (BuildContext context, GoRouterState state) async {
     SecureStorage secureStorage = SecureStorage();
 
@@ -26,6 +27,18 @@ GoRouter appRouter = GoRouter(
   routes: <RouteBase>[
     GoRoute(
         path: '/',
+        routes: [
+          GoRoute(
+              path: 'profile',
+              builder: (BuildContext context, GoRouterState state) {
+                return const ProfileScreen();
+              }),
+          GoRoute(
+              path: 'offers',
+              builder: (BuildContext context, GoRouterState state) {
+                return const HomeScreen();
+              }),
+        ],
         builder: (BuildContext context, GoRouterState state) {
           return const HomeScreen();
         }),
@@ -33,16 +46,6 @@ GoRouter appRouter = GoRouter(
         path: '/splash',
         builder: (BuildContext context, GoRouterState state) {
           return const SplashScreen();
-        }),
-    GoRoute(
-        path: '/profile',
-        builder: (BuildContext context, GoRouterState state) {
-          return const ProfileScreen();
-        }),
-    GoRoute(
-        path: '/offers',
-        builder: (BuildContext context, GoRouterState state) {
-          return const HomeScreen();
         }),
     GoRoute(
         path: '/login',

@@ -14,18 +14,18 @@ List<ButtonItems> bottomMenus = [
       icon: const Icon(
         Icons.home,
       )),
-  ButtonItems(
-      name: "Explore",
-      route: "/explore",
-      icon: const Icon(
-        Icons.search,
-      )),
-  ButtonItems(
-      name: "Cart",
-      route: "/cart",
-      icon: const Icon(
-        Icons.shopping_basket,
-      )),
+  // ButtonItems(
+  //     name: "Explore",
+  //     route: "/explore",
+  //     icon: const Icon(
+  //       Icons.search,
+  //     )),
+  // ButtonItems(
+  //     name: "Cart",
+  //     route: "/cart",
+  //     icon: const Icon(
+  //       Icons.shopping_basket,
+  //     )),
   ButtonItems(
       name: "Offers",
       route: "/offers",

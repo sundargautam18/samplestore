@@ -15,6 +15,7 @@ class AppLayout extends StatefulWidget {
 
 class _AppLayoutState extends State<AppLayout> {
   int selectedIndex = 0;
+  List<String> myMenu = ["/", "/tag", "/profile"];
   @override
   void initState() {
     super.initState();
@@ -26,19 +27,16 @@ class _AppLayoutState extends State<AppLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(widget.title),
-          leading: IconButton(
-              onPressed: () => context.pop(),
-              icon: const Icon(Icons.arrow_back))),
+        title: Text(widget.title),
+      ),
       body: widget.body,
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: selectedIndex,
+        currentIndex: myMenu.indexOf(GoRouterState.of(context).uri.toString()),
         onTap: (value) {
+          context.go(bottomMenus[value].route,);
           setState(() {
             selectedIndex = value;
           });
-
-          context.go(bottomMenus[value].route);
         },
         items: <BottomNavigationBarItem>[
           ...bottomMenus.map((e) => BottomNavigationBarItem(
