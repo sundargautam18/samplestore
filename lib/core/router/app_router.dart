@@ -1,11 +1,35 @@
+import 'dart:convert';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:samplestore/core/storage/secure_storage.dart';
+import 'package:samplestore/features/home/presentation/home_screen.dart';
 import 'package:samplestore/features/login/presentation/login_screen.dart';
 import 'package:samplestore/features/splash/splash_screen.dart';
 
 GoRouter appRouter = GoRouter(
-  initialLocation: "/login",
+  initialLocation: "/",
+  redirect: (BuildContext context, GoRouterState state) async {
+    SecureStorage secureStorage = SecureStorage();
+
+    final isLoggedIn = await secureStorage.readSecureData("accessToken");
+
+    if (isLoggedIn.isNotEmpty && state.fullPath != "/") {
+      return null;
+    }
+    if (isLoggedIn.isNotEmpty) {
+      return "/";
+    } else {
+      return "/login";
+    }
+  },
   routes: <RouteBase>[
+    GoRoute(
+        path: '/',
+        builder: (BuildContext context, GoRouterState state) {
+          return const HomeScreen();
+        }),
     GoRoute(
         path: '/splash',
         builder: (BuildContext context, GoRouterState state) {

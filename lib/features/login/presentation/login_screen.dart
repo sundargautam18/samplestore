@@ -1,7 +1,13 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:samplestore/core/storage/secure_storage.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 import 'package:samplestore/features/login/presentation/components/app_header.dart';
 import 'package:samplestore/features/login/presentation/components/login_form.dart';
@@ -17,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final GoogleSignIn googleSignIn =
       GoogleSignIn(signInOption: SignInOption.standard);
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
+  final SecureStorage secureStorage = SecureStorage();
   @override
   void initState() {
     super.initState();
@@ -64,15 +70,22 @@ class _LoginScreenState extends State<LoginScreen> {
                           final UserCredential authResult =
                               await _auth.signInWithCredential(credential);
                           final User? user = authResult.user;
-                          print(user);
 
                           if (user != null) {
-                            // Handle successful sign-in
-                            print(user);
+                            secureStorage.writeSecureData(
+                                "accessToken", user.uid);
+                            if (!context.mounted) return;
+                            handleLoginMessage(context, user);
                             // Navigate to a different screen or perform other actions
                           }
                         } catch (e) {
-                          print(e);
+                          if (!context.mounted) return;
+
+                          Alert(
+                            context: context,
+                            type: AlertType.error,
+                            title: "Sorry something went wrong",
+                          ).show();
                         }
                       },
                     ),
@@ -82,5 +95,17 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           )),
     );
+  }
+
+  void handleLoginMessage(BuildContext context, User user) {
+    Alert(
+            buttons: [],
+            context: context,
+            title: "Welcome ${user.displayName}",
+            type: AlertType.success)
+        .show();
+    Timer(const Duration(seconds: 1), () {
+      context.go("/");
+    });
   }
 }
