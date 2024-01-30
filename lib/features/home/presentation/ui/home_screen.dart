@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:samplestore/core/constants/colors.dart';
 import 'package:samplestore/features/home/data/data_sources/static_data/mens_fashion.dart';
 import 'package:samplestore/features/home/presentation/ui/fashion_card.dart';
+import 'package:samplestore/features/home/presentation/ui/sale_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,6 +17,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               appBar(),
               categoryWidget(),
+              const SaleWidget(saleName: "Flash Sale"),
             ],
           ),
         ),
