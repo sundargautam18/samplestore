@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "793311572069",
+    "project_id": "hamropasal-d2e35",
+    "storage_bucket": "hamropasal-d2e35.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793311572069:android:4928e9ea74d4560339968c",
+        "android_client_info": {
+          "package_name": "com.example.samplestore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793311572069-bo8eru70khdrbhe3031pjecvl6g9q4rt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.samplestore",
+            "certificate_hash": "102ffedcebbb8cd1f6a9729905d3c0cd352e89d2"
+          }
+        },
+        {
+          "client_id": "793311572069-m42li4mdac1676i6pqpigs586o5lo5lj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfXC47_2zwcjiKV9IjaQa5hqKXXHi3EQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "793311572069-m42li4mdac1676i6pqpigs586o5lo5lj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

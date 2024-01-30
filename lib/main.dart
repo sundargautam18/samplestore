@@ -1,10 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:samplestore/core/router/app_router.dart';
 import 'package:samplestore/core/theme/app_theme.dart';
+import 'package:samplestore/firebase_options.dart';
 
-void main() {
+void main() async {
+  await configure();
   runApp(const MyApp());
+}
+
+Future<void> configure() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.android);
 }
 
 class MyApp extends StatelessWidget {
