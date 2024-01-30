@@ -4,8 +4,6 @@ class SecureStorage {
   final FlutterSecureStorage storage = const FlutterSecureStorage();
   AndroidOptions _getAndroidOptions() => const AndroidOptions(
         encryptedSharedPreferences: true,
-        // sharedPreferencesName: 'Test2',
-        // preferencesKeyPrefix: 'Test'
       );
 
   writeSecureData(String key, String value) async {
