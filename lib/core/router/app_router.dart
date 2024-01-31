@@ -5,11 +5,11 @@ import 'package:samplestore/features/home_screen.dart';
 
 import 'package:samplestore/features/login/presentation/login_screen.dart';
 import 'package:samplestore/features/profile/presentation/profile_screen.dart';
+import 'package:samplestore/features/search/app_search.dart';
 import 'package:samplestore/features/splash/splash_screen.dart';
 
 GoRouter appRouter = GoRouter(
   initialLocation: "/",
-  
   redirect: (BuildContext context, GoRouterState state) async {
     SecureStorage secureStorage = SecureStorage();
 
@@ -32,6 +32,14 @@ GoRouter appRouter = GoRouter(
               path: 'profile',
               builder: (BuildContext context, GoRouterState state) {
                 return const ProfileScreen();
+              }),
+          GoRoute(
+              path: 'search',
+              builder: (BuildContext context, GoRouterState state) {
+                final path = state.uri.queryParameters["name"] ?? "all";
+                return AppSearch(
+                  query: path,
+                );
               }),
           GoRoute(
               path: 'offers',
