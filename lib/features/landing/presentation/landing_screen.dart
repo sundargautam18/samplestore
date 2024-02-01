@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:samplestore/core/common/counter.dart';
 import 'package:samplestore/core/constants/colors/app_colors.dart';
+import 'package:timer_count_down/timer_count_down.dart';
 
 /// This is a very simple class, used to
 /// demo the `SearchPage` package
@@ -58,7 +60,43 @@ class _LandingScreenState extends State<LandingScreen> {
         ),
         body: SafeArea(
             child: SingleChildScrollView(
-          child: Column(children: []),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(children: [
+              Stack(
+                children: [
+                  Container(
+                    height: 206.h,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage(
+                              "assets/images/banner/banner.png",
+                            ))),
+                    width: MediaQuery.of(context).size.width,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Super Flash Sale 50% Off",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 32,
+                                color: Colors.white),
+                          ),
+                          28.verticalSpace,
+                          SalesCounter(seconds: 3500400, onFinished: () => {})
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ]),
+          ),
         )));
   }
 }
