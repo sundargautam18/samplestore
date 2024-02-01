@@ -25,7 +25,7 @@ class _SalesCounterState extends State<SalesCounter> {
   void initState() {
     super.initState();
     _timeInSeconds = widget.seconds;
-    _timer = Timer.periodic(Duration(seconds: 1), (Timer timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (Timer timer) {
       if (_timeInSeconds < 1) {
         timer.cancel();
         widget.onFinished();
@@ -44,7 +44,7 @@ class _SalesCounterState extends State<SalesCounter> {
     int minutes = (_timeInSeconds ~/ 60) % 60;
     int seconds = _timeInSeconds % 60;
 
-    return Container(
+    return SizedBox(
       width: 100.sw,
       child: days > 0
           ? Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
@@ -77,7 +77,8 @@ class _SalesCounterState extends State<SalesCounter> {
 
   Widget generateCounterBlock(int counter, String title) {
     return Container(
-      color: Colors.white,
+   
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),  color: Colors.white, ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
@@ -89,7 +90,7 @@ class _SalesCounterState extends State<SalesCounter> {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),
             ),
             2.horizontalSpace,
-            Text("$title")
+            Text(title)
           ],
         ),
       ),
