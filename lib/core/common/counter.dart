@@ -77,8 +77,10 @@ class _SalesCounterState extends State<SalesCounter> {
 
   Widget generateCounterBlock(int counter, String title) {
     return Container(
-   
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),  color: Colors.white, ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(

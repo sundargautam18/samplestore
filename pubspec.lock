@@ -25,6 +25,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.2.0"
+  animated_checkmark:
+    dependency: transitive
+    description:
+      name: animated_checkmark
+      sha256: "878db0c6754c4145e9e17b46f20e304da060ac7a65f8ab4ab43494093f3f8443"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   args:
     dependency: transitive
     description:
@@ -89,6 +97,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
+  chips_choice:
+    dependency: "direct main"
+    description:
+      name: chips_choice
+      sha256: ba1c649293cba4e5d827b7f55681390e6c9bb9a98b45cc9128591000fb103d02
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.1"
   clock:
     dependency: transitive
     description:
@@ -161,6 +177,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.6.0"
+  eva_icons_flutter:
+    dependency: "direct main"
+    description:
+      name: eva_icons_flutter
+      sha256: "6d48a10b93590ab83eb092bee5adacdeb14f3d83f527a4b9e4092c363d56e2a8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.0"
   fake_async:
     dependency: transitive
     description:
@@ -233,11 +257,43 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.10.0"
+  flex_color_picker:
+    dependency: "direct main"
+    description:
+      name: flex_color_picker
+      sha256: "0871edc170153cfc3de316d30625f40a85daecfa76ce541641f3cc0ec7757cbf"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.1"
+  flex_seed_scheme:
+    dependency: transitive
+    description:
+      name: flex_seed_scheme
+      sha256: "29c12aba221eb8a368a119685371381f8035011d18de5ba277ad11d7dfb8657f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.0"
+  flexi_chip:
+    dependency: transitive
+    description:
+      name: flexi_chip
+      sha256: "5942219bdbd94a7527b69eb5640e6bd05d8ec6a41a5a4a1a10ca22a5a1f41beb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.8"
   flutter:
     dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_carousel_slider:
+    dependency: "direct main"
+    description:
+      name: flutter_carousel_slider
+      sha256: "4cd0691b98ebbf8b40361e01779b3a211002c963d3709630e775fba699d3b821"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   flutter_form_builder:
     dependency: "direct main"
     description:
@@ -307,6 +363,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_rating_bar:
+    dependency: "direct main"
+    description:
+      name: flutter_rating_bar
+      sha256: d2af03469eac832c591a1eba47c91ecc871fe5708e69967073c043b2d775ed93
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.1"
   flutter_screenutil:
     dependency: "direct main"
     description:
@@ -397,6 +461,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "9.1.0"
+  get:
+    dependency: transitive
+    description:
+      name: get
+      sha256: e4e7335ede17452b391ed3b2ede016545706c01a02292a6c97619705e7d2a85e
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.6.6"
+  get_storage:
+    dependency: "direct main"
+    description:
+      name: get_storage
+      sha256: "39db1fffe779d0c22b3a744376e86febe4ade43bf65e06eab5af707dc84185a2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.1"
   glob:
     dependency: transitive
     description:
@@ -725,6 +805,62 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.0"
+  shared_preferences:
+    dependency: "direct main"
+    description:
+      name: shared_preferences
+      sha256: "81429e4481e1ccfb51ede496e916348668fd0921627779233bd24cc3ff6abd02"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.2"
+  shared_preferences_android:
+    dependency: transitive
+    description:
+      name: shared_preferences_android
+      sha256: "8568a389334b6e83415b6aae55378e158fbc2314e074983362d20c562780fb06"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.1"
+  shared_preferences_foundation:
+    dependency: transitive
+    description:
+      name: shared_preferences_foundation
+      sha256: "7708d83064f38060c7b39db12aefe449cb8cdc031d6062280087bc4cdb988f5c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.5"
+  shared_preferences_linux:
+    dependency: transitive
+    description:
+      name: shared_preferences_linux
+      sha256: "9f2cbcf46d4270ea8be39fa156d86379077c8a5228d9dfdb1164ae0bb93f1faa"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.2"
+  shared_preferences_platform_interface:
+    dependency: transitive
+    description:
+      name: shared_preferences_platform_interface
+      sha256: "22e2ecac9419b4246d7c22bfbbda589e3acf5c0351137d87dd2939d984d37c3b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.2"
+  shared_preferences_web:
+    dependency: transitive
+    description:
+      name: shared_preferences_web
+      sha256: "7b15ffb9387ea3e237bb7a66b8a23d2147663d391cafc5c8f37b2e7b4bde5d21"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.2"
+  shared_preferences_windows:
+    dependency: transitive
+    description:
+      name: shared_preferences_windows
+      sha256: "841ad54f3c8381c480d0c9b508b89a34036f512482c407e6df7a9c4aa2ef8f59"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.2"
   sign_in_button:
     dependency: "direct main"
     description:
@@ -842,6 +978,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.3.0"
+  widget_event:
+    dependency: transitive
+    description:
+      name: widget_event
+      sha256: b71014bc7d8ec85a325357e76e6b5769ee1d8a67d099a6ce5c429440a19dbf18
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.5"
   win32:
     dependency: transitive
     description:

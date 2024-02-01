@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:samplestore/core/storage/secure_storage.dart';
 import 'package:samplestore/features/home_screen.dart';
 
 import 'package:samplestore/features/login/presentation/login_screen.dart';
+import 'package:samplestore/features/product/presentation/product_screen.dart';
 import 'package:samplestore/features/profile/presentation/profile_screen.dart';
 import 'package:samplestore/features/search/app_search.dart';
 import 'package:samplestore/features/splash/splash_screen.dart';
@@ -29,6 +31,14 @@ GoRouter appRouter = GoRouter(
         path: '/',
         routes: [
           GoRoute(
+              path: 'product/:id',
+              builder: (BuildContext context, GoRouterState state) {
+                final path = state.pathParameters["id"] ?? "";
+                return ProductScreen(
+                  productName: path,
+                );
+              }),
+          GoRoute(
               path: 'profile',
               builder: (BuildContext context, GoRouterState state) {
                 return const ProfileScreen();
@@ -41,14 +51,14 @@ GoRouter appRouter = GoRouter(
                   query: path,
                 );
               }),
-          GoRoute(
-              path: 'offers',
-              builder: (BuildContext context, GoRouterState state) {
-                return const HomeScreen();
-              }),
         ],
         builder: (BuildContext context, GoRouterState state) {
-          return const HomeScreen();
+          GetStorage getStorage = GetStorage();
+          int index = getStorage.read("index");
+
+          return HomeScreen(
+            currentIndex: index,
+          );
         }),
     GoRoute(
         path: '/splash',

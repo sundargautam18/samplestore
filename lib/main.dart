@@ -4,8 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:samplestore/core/router/app_router.dart';
 import 'package:samplestore/core/theme/app_theme.dart';
 import 'package:samplestore/firebase_options.dart';
+import 'package:get_storage/get_storage.dart';
 
 void main() async {
+  await GetStorage.init();
   await configure();
   runApp(const MyApp());
 }
