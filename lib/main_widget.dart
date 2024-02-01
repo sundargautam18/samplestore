@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:samplestore/core/constants/colors.dart';
 import 'package:samplestore/core/localStorage/local_storage.dart';
-import 'package:samplestore/features/account/presentation/ui/account_screen.dart';
+import 'package:samplestore/features/account/presentation/ui/screens/account_screen.dart';
 import 'package:samplestore/features/cart/presentation/ui/cart_screen.dart';
 import 'package:samplestore/features/explore/presentation/ui/explore_screen.dart';
 import 'package:samplestore/features/home/presentation/ui/home_screen.dart';

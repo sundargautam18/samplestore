@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:samplestore/core/localStorage/local_storage.dart';
+import 'package:samplestore/features/account/presentation/ui/screens/account_screen.dart';
 
 import 'package:samplestore/features/login/presentation/login_screen.dart';
+import 'package:samplestore/features/profile/presentation/ui/profile_screen.dart';
 import 'package:samplestore/main_widget.dart';
 
 GoRouter appRouter = GoRouter(
@@ -13,22 +15,38 @@ GoRouter appRouter = GoRouter(
           return const LoginScreen();
         }),
     GoRoute(
-        path: "/",
-        builder: (BuildContext context, GoRouterState state) {
-          return FutureBuilder(
-            future: AppLocalStorage.getNavigation(),
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
-              } else if (snapshot.hasError) {
-                return Text('Error: ${snapshot.error}');
-              } else if (snapshot.hasData) {
-                return MainScreen(selectBtn: snapshot.data);
-              } else {
-                return const SizedBox.shrink();
-              }
-            },
-          );
-        })
+      path: "/",
+      builder: (BuildContext context, GoRouterState state) {
+        return FutureBuilder(
+          future: AppLocalStorage.getNavigation(),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const CircularProgressIndicator();
+            } else if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            } else if (snapshot.hasData) {
+              return MainScreen(selectBtn: snapshot.data);
+            } else {
+              return const SizedBox.shrink();
+            }
+          },
+        );
+      },
+    ),
+    GoRoute(
+      path: "/account",
+      builder: (context, state) {
+        return const AccountScreen();
+      },
+      routes: [
+        GoRoute(
+          path: "profile",
+          builder: (context, state) {
+            return const ProfileScreen();
+          },
+        ),
+        
+      ],
+    )
   ],
 );
