@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:samplestore/core/constants/colors.dart';
+import 'package:samplestore/core/localStorage/local_storage.dart';
 import 'package:samplestore/features/account/presentation/ui/account_screen.dart';
 import 'package:samplestore/features/cart/presentation/ui/cart_screen.dart';
 import 'package:samplestore/features/explore/presentation/ui/explore_screen.dart';
@@ -75,6 +76,7 @@ class _MainScreenState extends State<MainScreen> {
             navigatorKey.currentState?.maybePop();
             setState(() {
               _currentIndex = index;
+              AppLocalStorage.setNavigation(index: _currentIndex);
             });
           },
           currentIndex: _currentIndex,

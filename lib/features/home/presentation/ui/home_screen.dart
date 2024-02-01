@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
               categoryWidget(),
               SaleWidget(products: flashSaleData),
               SaleWidget(products: megaSaleData),
-              recommendedContainer(),
+              recommendedContainer(context),
             ],
           ),
         ),
@@ -178,7 +178,7 @@ Padding categoryWidget() {
   );
 }
 
-Widget recommendedContainer() {
+Widget recommendedContainer(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.all(16.0),
     child: Column(
@@ -252,8 +252,9 @@ Widget recommendedContainer() {
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            childAspectRatio: 0.65,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            childAspectRatio: MediaQuery.of(context).size.width /
+                (MediaQuery.of(context).size.height * 0.68),
             crossAxisCount: 2,
             mainAxisSpacing: 16,
             crossAxisSpacing: 14,
@@ -261,7 +262,9 @@ Widget recommendedContainer() {
           itemCount: recommendedData.productData.length,
           padding: const EdgeInsets.all(16),
           itemBuilder: (context, index) {
-            return ProductCard(product: recommendedData.productData[index]);
+            return ProductCard(
+              product: recommendedData.productData[index],
+            );
           },
         ),
       ],
