@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:samplestore/features/home/presentation/ui/home_screen.dart';
 import 'package:samplestore/features/login/presentation/login_screen.dart';
+import 'package:samplestore/main_widget.dart';
 
 GoRouter appRouter = GoRouter(
   routes: <RouteBase>[
@@ -13,7 +13,9 @@ GoRouter appRouter = GoRouter(
     GoRoute(
         path: "/",
         builder: (BuildContext context, GoRouterState state) {
-          return const HomeScreen();
+          return const MainScreen(
+            selectBtn: 0,
+          );
         })
   ],
 );

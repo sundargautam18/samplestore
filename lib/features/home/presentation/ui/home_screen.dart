@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:samplestore/core/constants/colors.dart';
+import 'package:samplestore/features/home/data/data_sources/static_data/flash_sale_data.dart';
+import 'package:samplestore/features/home/data/data_sources/static_data/mega_sale_data.dart';
 import 'package:samplestore/features/home/data/data_sources/static_data/mens_fashion.dart';
+import 'package:samplestore/features/home/data/data_sources/static_data/recommended_data.dart';
+import 'package:samplestore/features/home/presentation/ui/carousel.dart';
 import 'package:samplestore/features/home/presentation/ui/fashion_card.dart';
+import 'package:samplestore/features/home/presentation/ui/product_card.dart';
 import 'package:samplestore/features/home/presentation/ui/sale_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -16,8 +21,11 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               appBar(),
+              const CarouselSliderWidget(),
               categoryWidget(),
-              const SaleWidget(saleName: "Flash Sale"),
+              SaleWidget(products: flashSaleData),
+              SaleWidget(products: megaSaleData),
+              recommendedContainer(),
             ],
           ),
         ),
@@ -166,6 +174,97 @@ Padding categoryWidget() {
           ),
         ],
       ),
+    ),
+  );
+}
+
+Widget recommendedContainer() {
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: Column(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Colors.black.withOpacity(0.28),
+                ConstantColors.backgroundWhite,
+              ],
+            ),
+          ),
+          child: Stack(
+            children: [
+              Image.asset("assets/images/recommendedImage.png"),
+              const Positioned(
+                top: 48,
+                left: 24,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Recommended",
+                      style: TextStyle(
+                        color: ConstantColors.backgroundWhite,
+                        fontFamily: "Poppins",
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                        fontStyle: FontStyle.normal,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                      "Product",
+                      style: TextStyle(
+                        color: ConstantColors.backgroundWhite,
+                        fontFamily: "Poppins",
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                        fontStyle: FontStyle.normal,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Text(
+                      "We recommend the best for you",
+                      style: TextStyle(
+                        color: ConstantColors.backgroundWhite,
+                        fontFamily: "Poppins",
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.normal,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            childAspectRatio: 0.65,
+            crossAxisCount: 2,
+            mainAxisSpacing: 16,
+            crossAxisSpacing: 14,
+          ),
+          itemCount: recommendedData.productData.length,
+          padding: const EdgeInsets.all(16),
+          itemBuilder: (context, index) {
+            return ProductCard(product: recommendedData.productData[index]);
+          },
+        ),
+      ],
     ),
   );
 }

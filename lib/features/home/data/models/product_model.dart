@@ -14,6 +14,7 @@ class ProductModel {
   final String productName;
   final String? discountPrice;
   final String exactPrice;
+  final bool? recommend;
   final String? discountPercentage;
 
   ProductModel({
@@ -23,5 +24,6 @@ class ProductModel {
     required this.exactPrice,
     this.discountPercentage,
     this.discountPrice,
+    this.recommend,
   });
 }
