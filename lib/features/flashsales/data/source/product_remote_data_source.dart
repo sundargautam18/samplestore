@@ -1,14 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:samplestore/core/constants/data/products.dart';
 import 'package:samplestore/core/errors/exceptions/exceptions.dart';
+import 'package:samplestore/core/injection/injection_container.dart';
 
 abstract class ProductRemoteDataSource {
   Future<List<Product>> getProductList(String url);
 }
 
 class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
-  final Dio dio;
-  ProductRemoteDataSourceImpl({required this.dio});
+  final Dio dio = locator.get<Dio>();
 
   @override
   Future<List<Product>> getProductList(String url) async {

@@ -3,15 +3,15 @@ import 'package:samplestore/core/connection/network_info.dart';
 import 'package:samplestore/core/constants/data/products.dart';
 import 'package:samplestore/core/errors/exceptions/exceptions.dart';
 import 'package:samplestore/core/errors/failure/failure.dart';
+import 'package:samplestore/core/injection/injection_container.dart';
 import 'package:samplestore/features/flashsales/business/repository/product_repository.dart';
 import 'package:samplestore/features/flashsales/data/source/product_remote_data_source.dart';
 
 class ProductRepositoryImpl extends ProductRepository {
   final ProductRemoteDataSource remoteDataSource;
-  final NetworkInfo networkInfo;
+  final NetworkInfo networkInfo = locator.get<NetworkInfo>();
   ProductRepositoryImpl({
     required this.remoteDataSource,
-    required this.networkInfo,
   });
 
   @override
