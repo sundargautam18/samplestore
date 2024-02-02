@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:samplestore/core/storage/secure_storage.dart';
+import 'package:samplestore/features/flashsales/presentation/flashsale_screen.dart';
 import 'package:samplestore/features/home_screen.dart';
 
 import 'package:samplestore/features/login/presentation/login_screen.dart';
@@ -37,6 +38,11 @@ GoRouter appRouter = GoRouter(
                 return ProductScreen(
                   productName: path,
                 );
+              }),
+          GoRoute(
+              path: 'flashsales',
+              builder: (BuildContext context, GoRouterState state) {
+                return const FlashSales();
               }),
           GoRoute(
               path: 'profile',

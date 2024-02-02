@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen>
     super.initState();
     controller = TabController(length: 3, vsync: this);
     index = widget.currentIndex;
-  controller.animateTo(index);
+    controller.animateTo(index);
   }
 
   @override

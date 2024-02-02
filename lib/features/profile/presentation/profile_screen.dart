@@ -19,7 +19,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  final User currentUser = FirebaseAuth.instance.currentUser!;
   final List<Map<String, String>> items = [
     {"title": "Gender", "content": "Male"},
     {"title": "Phone Number", "content": "+9779824961070"},
@@ -45,7 +44,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       // Adjust the radius as needed
                       ),
                   child: Image.network(
-                    currentUser.photoURL.toString(),
+                    "https://cdn-icons-png.freepik.com/512/3135/3135715.png",
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -54,12 +53,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      currentUser.displayName.toString(),
+                      "Sample Bahadur Sarkar",
                       style: TextStyle(
                           fontSize: 14.sp, fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      currentUser.email.toString(),
+                      "samplestore@gmail.com",
                       style:
                           TextStyle(fontSize: 14.sp, color: HexColor(appGrey)),
                     ),

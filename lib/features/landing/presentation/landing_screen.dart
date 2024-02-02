@@ -65,37 +65,40 @@ class _LandingScreenState extends State<LandingScreen> {
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(children: [
-              Stack(
-                children: [
-                  Container(
-                    height: 206.h,
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage(
-                              "assets/images/banner/banner.png",
-                            ))),
-                    width: MediaQuery.of(context).size.width,
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Super Flash Sale 50% Off",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 32,
-                                color: Colors.white),
-                          ),
-                          28.verticalSpace,
-                          SalesCounter(seconds: 3500400, onFinished: () => {})
-                        ],
+              GestureDetector(
+                onTap: () => context.go("/flashsales"),
+                child: Stack(
+                  children: [
+                    Container(
+                      height: 206.h,
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage(
+                                "assets/images/banner/banner.png",
+                              ))),
+                      width: MediaQuery.of(context).size.width,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Super Flash Sale 50% Off",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 32,
+                                  color: Colors.white),
+                            ),
+                            28.verticalSpace,
+                            SalesCounter(seconds: 3500400, onFinished: () => {})
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               16.verticalSpace,
               Column(
@@ -281,7 +284,7 @@ class _LandingScreenState extends State<LandingScreen> {
         )));
   }
 
-  static Widget  generateCard() {
+  static Widget generateCard() {
     return Column(
       children: [
         Container(

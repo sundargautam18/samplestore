@@ -1,9 +1,18 @@
+import 'dart:async';
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:loader_overlay/loader_overlay.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:samplestore/core/constants/colors/app_colors.dart';
+import 'package:samplestore/core/dioclient/dio_client.dart';
+import 'package:samplestore/core/storage/secure_storage.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -20,6 +29,8 @@ class _LoginFormState extends State<LoginForm> {
       _obscureText = !_obscureText;
     });
   }
+
+  final SecureStorage secureStorage = SecureStorage();
 
   @override
   Widget build(BuildContext context) {
@@ -88,8 +99,31 @@ class _LoginFormState extends State<LoginForm> {
                             borderRadius: BorderRadius.circular(5),
                           ),
                         ),
-                        onPressed: () {
+                        onPressed: () async {
                           if (formKey.currentState!.saveAndValidate()) {
+                            Dio dioClient = Client().init();
+                            try {
+                              context.loaderOverlay.show();
+                              Response response =
+                                  await dioClient.post("auth/login", data: {
+                                "email": formKey.currentState!.value["email"],
+                                "password":
+                                    formKey.currentState!.value["password"],
+                              });
+                              generateAlert(
+                                  type: AlertType.success,
+                                  message: "Logged in successfully");
+                              secureStorage.writeSecureData(
+                                  "accessToken", response.data["access_token"]);
+                              context.loaderOverlay.hide();
+                            } catch (e) {
+                              print("error");
+                              generateAlert(
+                                  type: AlertType.error,
+                                  message: "Invalid credentials");
+                              context.loaderOverlay.hide();
+                            }
+
                             // Form is validated
                             print(formKey.currentState!.value);
                           } else {
@@ -105,5 +139,12 @@ class _LoginFormState extends State<LoginForm> {
             )
           ],
         ));
+  }
+
+  void generateAlert({required AlertType type, required String message}) {
+    Alert(buttons: [], context: context, title: message, type: type).show();
+    Timer(const Duration(seconds: 1), () {
+      context.go("/");
+    });
   }
 }
