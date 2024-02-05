@@ -8,8 +8,7 @@ import 'package:samplestore/features/landing/presentation/landing_screen.dart';
 import 'package:samplestore/features/profile/presentation/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  final int currentIndex;
-  const HomeScreen({super.key, required this.currentIndex});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -31,8 +30,6 @@ class _HomeScreenState extends State<HomeScreen>
   void initState() {
     super.initState();
     controller = TabController(length: 3, vsync: this);
-    index = widget.currentIndex;
-    controller.animateTo(index);
   }
 
   @override
@@ -48,7 +45,6 @@ class _HomeScreenState extends State<HomeScreen>
           setState(() {
             index = currentIndex;
           });
-          box.write("index", index);
           controller.animateTo(index);
         },
         items: <BottomNavigationBarItem>[

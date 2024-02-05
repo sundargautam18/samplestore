@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:samplestore/core/constants/data/products.dart';
 import 'package:samplestore/core/errors/exceptions/exceptions.dart';
 import 'package:samplestore/core/injection/injection_container.dart';
+import 'package:samplestore/features/flashsales/business/modal/product.dart';
 
 abstract class ProductRemoteDataSource {
   Future<List<Product>> getProductList(String url);

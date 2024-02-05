@@ -59,11 +59,9 @@ GoRouter appRouter = GoRouter(
               }),
         ],
         builder: (BuildContext context, GoRouterState state) {
-          GetStorage getStorage = GetStorage();
-          int index = getStorage.read("index");
 
-          return HomeScreen(
-            currentIndex: index,
+          return const HomeScreen(
+           
           );
         }),
     GoRoute(

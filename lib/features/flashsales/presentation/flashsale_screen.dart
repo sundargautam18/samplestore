@@ -2,13 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:samplestore/core/common/counter.dart';
+import 'package:samplestore/core/common/shimmer_effect.dart';
 import 'package:samplestore/core/connection/network_info.dart';
+import 'package:samplestore/core/constants/colors/app_colors.dart';
 import 'package:samplestore/core/dioclient/dio_client.dart';
 import 'package:samplestore/features/flashsales/data/cubit/product_cubit.dart';
 import 'package:samplestore/features/flashsales/data/repository/product_repository_impl.dart';
 import 'package:samplestore/features/flashsales/data/source/product_remote_data_source.dart';
+import 'package:samplestore/features/landing/presentation/component/product_card.dart';
+import 'package:shimmer/shimmer.dart';
 
 class FlashSales extends StatefulWidget {
   const FlashSales({super.key});
@@ -18,6 +23,8 @@ class FlashSales extends StatefulWidget {
 }
 
 class _FlashSalesState extends State<FlashSales> {
+  get product => null;
+
   @override
   void initState() {
     super.initState();
@@ -45,8 +52,41 @@ class _FlashSalesState extends State<FlashSales> {
       ),
       body: BlocBuilder<ProductCubit, ProductState>(builder: (context, state) {
         if (state is ProductLoading) {
-          return const Center(
-            child: CircularProgressIndicator(),
+          return Column(
+            children: [
+              generateShimmer(206.h, MediaQuery.of(context).size.width),
+              16.verticalSpace,
+              Column(
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        "Flash sale",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "See more",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: HexColor(primaryColor)),
+                      )
+                    ],
+                  ),
+                  12.verticalSpace,
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        ...List.generate(
+                            500, (index) => Padding(padding:       const EdgeInsets.only(left: 16),child: generateShimmer(150, 150)))
+                      ],
+                    ),
+                  )
+                ],
+              )
+            ],
           );
         } else if (state is ProductSucess) {
           return Column(
@@ -84,6 +124,44 @@ class _FlashSalesState extends State<FlashSales> {
                 ],
               ),
               16.verticalSpace,
+
+              // SingleChildScrollView(
+              //     scrollDirection: Axis.horizontal,
+              //     child: Row(children: [
+              //       ...state.productList
+              //           .map((product) => ProductCardMod(product: product))
+              //     ])),
+
+              Column(
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        "Flash sale",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "See more",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: HexColor(primaryColor)),
+                      )
+                    ],
+                  ),
+                  12.verticalSpace,
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        ...state.productList
+                            .map((product) => ProductCardMod(product: product))
+                      ],
+                    ),
+                  )
+                ],
+              )
             ],
           );
         } else if (state is ProductError) {
