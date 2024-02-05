@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:samplestore/features/animation/cart_cubit.dart';
 import 'package:samplestore/features/animation/counter_cubit.dart';
 
 import 'package:samplestore/features/flashsales/data/cubit/product_cubit.dart';
@@ -15,8 +15,11 @@ List<SingleChildWidget> get blocProviderList {
     BlocProvider(
       create: (context) => ProductCubit(productRepositoryImpl),
     ),
-      BlocProvider(
+    BlocProvider(
       create: (context) => CounterCubit(),
+    ),
+    BlocProvider(
+      create: (context) => CartCubit(),
     ),
     //other bloc providers
   ];

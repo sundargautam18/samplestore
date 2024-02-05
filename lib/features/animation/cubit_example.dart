@@ -1,5 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:samplestore/features/animation/cart_cubit.dart';
 import 'package:samplestore/features/animation/counter_cubit.dart';
 
 class CubitExample extends StatefulWidget {
@@ -12,16 +16,23 @@ class CubitExample extends StatefulWidget {
 class _CubitExampleState extends State<CubitExample> {
   @override
   Widget build(BuildContext context) {
-    final CounterCubit counterCubit = BlocProvider.of<CounterCubit>(context);
-
+    final CartCubit counterCubit = BlocProvider.of<CartCubit>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Cubit Example"),
+        title: Text("Cubit cart example"),
       ),
-      body: BlocBuilder<CounterCubit, int>(builder: (context, state) {
-        return Center(
-          child: Text(state.toString()),
-        );
+      body: BlocBuilder<CartCubit, List<CartItem>>(builder: (context, state) {
+        return Column(children: [
+          ...state
+              .map((e) => Row(
+                    children: [
+                      Text(e.name),
+                      10.horizontalSpace,
+                      Text(e.quantity.toString()),
+                    ],
+                  ))
+              .toList(),
+        ]);
       }),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -29,7 +40,8 @@ class _CubitExampleState extends State<CubitExample> {
         children: [
           FloatingActionButton(
             onPressed: () {
-              counterCubit.increment();
+              counterCubit
+                  .addToCart(CartItem(name: "test2", quantity: 1, price: 200));
             },
             tooltip: 'Increment',
             child: Icon(Icons.add),
@@ -37,7 +49,8 @@ class _CubitExampleState extends State<CubitExample> {
           SizedBox(height: 10),
           FloatingActionButton(
             onPressed: () {
-              counterCubit.decrement();
+              counterCubit.removeFromCart(
+                  CartItem(name: "test", quantity: 1, price: 200));
             },
             tooltip: 'Decrement',
             child: Icon(Icons.remove),
