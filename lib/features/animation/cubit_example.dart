@@ -32,6 +32,7 @@ class _CubitExampleState extends State<CubitExample> {
                     ],
                   ))
               .toList(),
+          Text("Total:${counterCubit.getTotalPrice()}")
         ]);
       }),
       floatingActionButton: Column(
@@ -50,10 +51,18 @@ class _CubitExampleState extends State<CubitExample> {
           FloatingActionButton(
             onPressed: () {
               counterCubit.removeFromCart(
-                  CartItem(name: "test", quantity: 1, price: 200));
+                  CartItem(name: "test2", quantity: 1, price: 200));
             },
             tooltip: 'Decrement',
             child: Icon(Icons.remove),
+          ),
+             FloatingActionButton(
+            onPressed: () {
+              counterCubit.updateQuantity(
+                  CartItem(name: "test2", quantity: 1, price: 200),2);
+            },
+            tooltip: 'Update',
+            child: Icon(Icons.update),
           ),
         ],
       ),
