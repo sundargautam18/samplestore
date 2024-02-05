@@ -8,6 +8,7 @@ import 'package:samplestore/features/home_screen.dart';
 import 'package:samplestore/features/login/presentation/login_screen.dart';
 import 'package:samplestore/features/product/presentation/product_screen.dart';
 import 'package:samplestore/features/profile/presentation/profile_screen.dart';
+import 'package:samplestore/features/review_create.dart';
 import 'package:samplestore/features/search/app_search.dart';
 import 'package:samplestore/features/splash/splash_screen.dart';
 
@@ -50,6 +51,12 @@ GoRouter appRouter = GoRouter(
                 return const ProfileScreen();
               }),
           GoRoute(
+              path: 'create-review',
+              name: "create-review",
+              builder: (BuildContext context, GoRouterState state) {
+                return const CreateReview();
+              }),
+          GoRoute(
               path: 'search',
               builder: (BuildContext context, GoRouterState state) {
                 final path = state.uri.queryParameters["name"] ?? "all";
@@ -59,10 +66,7 @@ GoRouter appRouter = GoRouter(
               }),
         ],
         builder: (BuildContext context, GoRouterState state) {
-
-          return const HomeScreen(
-           
-          );
+          return const HomeScreen();
         }),
     GoRoute(
         path: '/splash',

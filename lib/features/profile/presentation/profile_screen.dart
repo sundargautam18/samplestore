@@ -91,7 +91,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 });
               },
               child: const Text("Logout"),
-            )
+            ),
+            TextButton.icon(
+                onPressed: () => context.goNamed("create-review"),
+                icon: Icon(Icons.reviews),
+                label: const Text("Write Review"))
           ],
         ),
       ),
