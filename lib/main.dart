@@ -7,14 +7,14 @@ import 'package:samplestore/core/bloc/bloc_provider_list.dart';
 import 'package:samplestore/core/injection/injection_container.dart';
 import 'package:samplestore/core/router/app_router.dart';
 import 'package:samplestore/core/theme/app_theme.dart';
-import 'package:samplestore/features/flashsales/business/modal/product.dart';
+
 import 'package:samplestore/firebase_options.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:samplestore/hive/hive_manager.dart';
 
 void main() async {
   setup();
-     Bloc.observer =  AppBlocObserver();
+  Bloc.observer = const AppBlocObserver();
   await GetStorage.init();
   await configure();
   runApp(MultiBlocProvider(providers: blocProviderList, child: const MyApp()));
@@ -22,9 +22,7 @@ void main() async {
 
 Future<void> configure() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
-    Hive.registerAdapter(ProductAdapter());
-  await Hive.openBox<Product>('products');
+  await HiveManager().init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.android);
 }
 
