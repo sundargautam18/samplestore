@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -9,6 +10,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:samplestore/core/constants/colors/app_colors.dart';
 import 'package:samplestore/core/storage/secure_storage.dart';
+import 'package:samplestore/features/animation/counter_cubit.dart';
 import 'package:samplestore/features/profile/presentation/components/info_tile.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -23,8 +25,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
     {"title": "Gender", "content": "Male"},
     {"title": "Phone Number", "content": "+9779824961070"},
   ];
+
   @override
   Widget build(BuildContext context) {
+    final CounterCubit counterCubit = BlocProvider.of<CounterCubit>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Profile"),
@@ -95,7 +100,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
             TextButton.icon(
                 onPressed: () => context.goNamed("create-review"),
                 icon: Icon(Icons.reviews),
-                label: const Text("Write Review"))
+                label: const Text("Write Review")),
+            TextButton.icon(
+                onPressed: () => context.goNamed("cubitexample"),
+                icon: Icon(Icons.chat_bubble_outline),
+                label: BlocBuilder<CounterCubit, int>(builder: (context, state) {
+                  return Text("Cubit Example ${state}");
+                }))
           ],
         ),
       ),

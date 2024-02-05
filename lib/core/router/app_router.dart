@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:samplestore/core/storage/secure_storage.dart';
+import 'package:samplestore/features/animation/cubit_example.dart';
 import 'package:samplestore/features/flashsales/presentation/flashsale_screen.dart';
 import 'package:samplestore/features/home_screen.dart';
 
@@ -44,6 +45,12 @@ GoRouter appRouter = GoRouter(
               path: 'flashsales',
               builder: (BuildContext context, GoRouterState state) {
                 return const FlashSales();
+              }),
+          GoRoute(
+              path: 'cubitexample',
+              name: "cubitexample",
+              builder: (BuildContext context, GoRouterState state) {
+                return const CubitExample();
               }),
           GoRoute(
               path: 'profile',
