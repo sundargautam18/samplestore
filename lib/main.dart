@@ -18,6 +18,7 @@ import 'package:samplestore/hive/hive_manager.dart';
 @pragma("vm:entry-point")
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await AppPathProvider.initPath();
 
   setup();
@@ -26,7 +27,7 @@ void main() async {
   await configure();
   runApp(MultiBlocProvider(
       providers: blocProviderList,
-      child: const OverlaySupport.global(child:  MyApp())));
+      child: const OverlaySupport.global(child: MyApp())));
 }
 
 Future<void> configure() async {
