@@ -14,7 +14,7 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
 
   @override
   Future<List<Product>> getProductList(String url) async {
-    final response = await dio.get(url,options: dioOptions.copyWith(policy: CachePolicy.refresh).toOptions());
+    final response = await dio.get(url);
 
     if (response.statusCode == 200) {
       List<dynamic> jsonList = response.data;

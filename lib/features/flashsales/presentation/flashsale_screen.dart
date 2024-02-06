@@ -33,7 +33,7 @@ class _FlashSalesState extends State<FlashSales> {
   }
 
   _getArticle() {
-    BlocProvider.of<ProductCubit>(context).getProductList("products");
+    BlocProvider.of<ProductCubit>(context).getProductList("products/1");
   }
 
   @override

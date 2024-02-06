@@ -3,5 +3,16 @@
          the Flutter tool needs it to communicate with the running application
          to allow setting breakpoints, to provide hot reload, etc.
     -->
+     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.INTERNET"/>
+      <uses-permission android:name="android.permission.VIBRATE" />
+     <application>
+
+        <service android:name="flutter.overlay.window.flutter_overlay_window.OverlayService" android:exported="false" />
+         <service android:name=".MessagingService">
+      <intent-filter>
+        <action android:name="com.google.firebase.MESSAGING_EVENT" />
+      </intent-filter>
+    </service>
+    </application>
 </manifest>
