@@ -13,6 +13,8 @@ class ProductSucess extends ProductState {
   ProductSucess(this.productList);
 }
 
+class ProductDeleteSucess extends ProductState {}
+
 class ProductError extends ProductState {
   final String errorMessage;
   ProductError(this.errorMessage);

@@ -42,7 +42,7 @@ class _CubitExampleState extends State<CubitExample> {
           FloatingActionButton(
             onPressed: () {
               counterCubit
-                  .addToCart(CartItem(name: "test2", quantity: 1, price: 200));
+                  .addToCart(CartItem(name: "test23", quantity: 1, price: 200));
             },
             tooltip: 'Increment',
             child: Icon(Icons.add),
@@ -56,10 +56,10 @@ class _CubitExampleState extends State<CubitExample> {
             tooltip: 'Decrement',
             child: Icon(Icons.remove),
           ),
-             FloatingActionButton(
+          FloatingActionButton(
             onPressed: () {
               counterCubit.updateQuantity(
-                  CartItem(name: "test2", quantity: 1, price: 200),2);
+                  CartItem(name: "test2", quantity: 1, price: 200), 2);
             },
             tooltip: 'Update',
             child: Icon(Icons.update),

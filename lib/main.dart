@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:samplestore/core/app_pathprovider.dart';
 import 'package:samplestore/core/bloc/bloc_observer.dart';
 import 'package:samplestore/core/bloc/bloc_provider_list.dart';
 import 'package:samplestore/core/injection/injection_container.dart';
@@ -13,6 +14,8 @@ import 'package:get_storage/get_storage.dart';
 import 'package:samplestore/hive/hive_manager.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await AppPathProvider.initPath();
   setup();
   Bloc.observer = const AppBlocObserver();
   await GetStorage.init();
@@ -21,7 +24,6 @@ void main() async {
 }
 
 Future<void> configure() async {
-  WidgetsFlutterBinding.ensureInitialized();
   await HiveManager().init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.android);
 }

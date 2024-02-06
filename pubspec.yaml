@@ -35,6 +35,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
   dio: ^5.4.0
+  dio_cache_interceptor: ^3.5.0
+  dio_cache_interceptor_hive_store: ^3.2.2
   dropdown_button2: ^2.3.9
   easy_autocomplete: ^1.6.0
   equatable: ^2.0.5
@@ -68,6 +70,7 @@ dependencies:
   json_serializable: ^6.7.1
   loader_overlay: ^4.0.0
   logger: ^2.0.2+1
+  path_provider: ^2.1.2
   rflutter_alert: ^2.0.7
   search_page: ^2.3.0
   shared_preferences: ^2.2.2
