@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
+import 'package:samplestore/core/dioclient/dio_client.dart';
 import 'package:samplestore/core/errors/exceptions/exceptions.dart';
 import 'package:samplestore/core/injection/injection_container.dart';
 import 'package:samplestore/features/flashsales/business/modal/product.dart';
@@ -12,7 +14,7 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
 
   @override
   Future<List<Product>> getProductList(String url) async {
-    final response = await dio.get(url);
+    final response = await dio.get(url,options: dioOptions.copyWith(policy: CachePolicy.refresh).toOptions());
 
     if (response.statusCode == 200) {
       List<dynamic> jsonList = response.data;
